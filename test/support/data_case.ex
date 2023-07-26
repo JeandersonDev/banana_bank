@@ -24,6 +24,7 @@ defmodule BananaBank.DataCase do
       import Ecto.Changeset
       import Ecto.Query
       import BananaBank.DataCase
+      import BananaBank.Factory
     end
   end
 

@@ -28,6 +28,7 @@ defmodule BananaBankWeb.ConnCase do
       import Plug.Conn
       import Phoenix.ConnTest
       import BananaBankWeb.ConnCase
+      import BananaBank.Factory
     end
   end
 

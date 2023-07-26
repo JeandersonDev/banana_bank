@@ -33,15 +33,17 @@ defmodule BananaBank.MixProject do
   defp deps do
     [
       {:argon2_elixir, "3.1.0"},
+      {:ex_machina, "~> 2.7.0", only: :test},
+      {:ecto_sql, "~> 3.10"},
+      {:faker, "~> 0.17", only: :test},
+      {:jason, "~> 1.2"},
       {:phoenix, "~> 1.7.7"},
       {:phoenix_ecto, "~> 4.4"},
-      {:ecto_sql, "~> 3.10"},
-      {:postgrex, ">= 0.0.0"},
       {:phoenix_live_dashboard, "~> 0.8.0"},
+      {:plug_cowboy, "~> 2.5"},
+      {:postgrex, ">= 0.0.0"},
       {:telemetry_metrics, "~> 0.6"},
-      {:telemetry_poller, "~> 1.0"},
-      {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:telemetry_poller, "~> 1.0"}
     ]
   end
 
