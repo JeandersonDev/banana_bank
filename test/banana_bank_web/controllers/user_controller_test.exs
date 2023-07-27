@@ -50,5 +50,37 @@ defmodule BananaBankWeb.UserControllerTest do
 
       assert response == expected_response
     end
+
+    test "Delete a user when given a valid id", %{conn: conn} do
+      user = insert(:user)
+
+      response =
+        conn
+        |> delete(~p"/api/users/#{user.id}")
+        |> json_response(:ok)
+
+      expected_response = %{
+        "data" => %{
+          "cep" => user.cep,
+          "email" => user.email,
+          "id" => user.id,
+          "name" => user.name
+        },
+        "message" => "User delete successfully"
+      }
+
+      assert response == expected_response
+    end
+
+    test "Returns an error when given a invalid id", %{conn: conn} do
+      response =
+        conn
+        |> delete(~p"/api/users/0")
+        |> json_response(:not_found)
+
+      expected_response = %{"error" => "not_found", "message" => "User not found"}
+
+      assert response == expected_response
+    end
   end
 end
