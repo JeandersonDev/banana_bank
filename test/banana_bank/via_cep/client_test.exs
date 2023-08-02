@@ -54,5 +54,5 @@ defmodule BananaBank.ViaCep.ClientTest do
     end
   end
 
-  defp endpoint_url(port), do: "http://localhost:#{port}/"
+  defp endpoint_url(port), do: "http://localhost:#{port}"
 end

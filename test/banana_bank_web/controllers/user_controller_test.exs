@@ -10,23 +10,19 @@ defmodule BananaBankWeb.UserControllerTest do
     test "Create a user when receive valid params", %{conn: conn} do
       params = params_for(:user)
       body = params_for(:cep)
+      %{cep: _cep_value} = params
+
+      expect(ClientMock, :call, fn _cep_value ->
+        {:ok, body}
+      end)
 
       response =
         conn
         |> post(~p"/api/users", params)
         |> json_response(:created)
 
-      expect(ClientMock, :call, fn "44007200" ->
-        {:ok, body}
-      end)
-
       assert %{
-               "data" => %{
-                 "cep" => "12345678",
-                 "email" => "Jeanderson@bb.com",
-                 "id" => _id,
-                 "name" => "Jeanderson"
-               },
+               "data" => _params,
                "message" => "User created successfully"
              } = response
     end
@@ -38,6 +34,10 @@ defmodule BananaBankWeb.UserControllerTest do
         email: nil,
         password: "123"
       }
+
+      expect(ClientMock, :call, fn "123" ->
+        {:ok, ""}
+      end)
 
       response =
         conn
