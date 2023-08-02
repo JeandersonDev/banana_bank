@@ -6,7 +6,7 @@ defmodule BananaBank.Factories.UserFactory do
       def user_factory do
         %User{
           name: Faker.Person.PtBr.first_name(),
-          cep: "12345678",
+          cep: "44007200",
           email: sequence(:email, &"Fulano#{&1}@bb.com"),
           password_hash: Argon2.add_hash("12345678").password_hash
         }

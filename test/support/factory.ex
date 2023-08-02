@@ -3,4 +3,7 @@ defmodule BananaBank.Factory do
 
   # User
   use BananaBank.Factories.UserFactory
+
+  # ViaCep
+  use BananaBank.Factories.CepFactory
 end
