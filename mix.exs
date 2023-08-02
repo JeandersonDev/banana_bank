@@ -33,10 +33,12 @@ defmodule BananaBank.MixProject do
   defp deps do
     [
       {:argon2_elixir, "3.1.0"},
+      {:bypass, "~> 2.1", only: :test},
       {:ex_machina, "~> 2.7.0", only: :test},
       {:ecto_sql, "~> 3.10"},
       {:faker, "~> 0.17", only: :test},
       {:jason, "~> 1.2"},
+      {:mox, "~> 1.0", only: :test},
       {:phoenix, "~> 1.7.7"},
       {:phoenix_ecto, "~> 4.4"},
       {:phoenix_live_dashboard, "~> 0.8.0"},

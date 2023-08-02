@@ -1,19 +1,24 @@
 defmodule BananaBankWeb.UserControllerTest do
   use BananaBankWeb.ConnCase
 
+  alias BananaBank.ViaCep.ClientMock
+  import Mox
+
+  setup :verify_on_exit!
+
   describe "create/2" do
     test "Create a user when receive valid params", %{conn: conn} do
-      params = %{
-        name: "Jeanderson",
-        cep: "12345678",
-        email: "Jeanderson@bb.com",
-        password: "123456789"
-      }
+      params = params_for(:user)
+      body = params_for(:cep)
 
       response =
         conn
         |> post(~p"/api/users", params)
         |> json_response(:created)
+
+      expect(ClientMock, :call, fn "44007200" ->
+        {:ok, body}
+      end)
 
       assert %{
                "data" => %{
