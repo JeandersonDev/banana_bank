@@ -1,5 +1,4 @@
 defmodule BananaBank.Users do
-  alias Ecto.Query.Builder.Update
   alias BananaBank.Users.Create
   alias BananaBank.Users.Delete
   alias BananaBank.Users.Get
