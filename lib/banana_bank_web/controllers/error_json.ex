@@ -15,8 +15,7 @@ defmodule BananaBankWeb.ErrorJSON do
 
   def error(%{status: :not_found}) do
     %{
-      error: :not_found,
-      message: "User not found"
+      error: :not_found
     }
   end
 
