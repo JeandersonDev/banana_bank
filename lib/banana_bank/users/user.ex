@@ -38,6 +38,7 @@ defmodule BananaBank.Users.User do
     |> validate_format(:email, ~r/@/)
     |> validate_length(:cep, is: 8)
     |> validate_length(:password, min: 6)
+    |> unique_constraint(:email)
   end
 
   defp add_password_hash(
