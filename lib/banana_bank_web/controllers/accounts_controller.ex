@@ -15,7 +15,7 @@ defmodule BananaBankWeb.AccountsController do
   end
 
   def delete(conn, %{"id" => id}) do
-    with {:ok, account} <- Accounts.delete(id) do
+    with {:ok, %Account{} = account} <- Accounts.delete(id) do
       conn
       |> put_status(:ok)
       |> render(:delete, account: account)
@@ -27,6 +27,14 @@ defmodule BananaBankWeb.AccountsController do
       conn
       |> put_status(:ok)
       |> render(:get, account: account)
+    end
+  end
+
+  def transaction(conn, params) do
+    with {:ok, transaction} <- Accounts.transaction(params) do
+      conn
+      |> put_status(:ok)
+      |> render(:transaction, transaction: transaction)
     end
   end
 end

@@ -10,7 +10,9 @@ defmodule BananaBankWeb.Router do
 
     get "/", WelcomeController, :index
     resources "/users", UsersController, only: [:create, :update, :delete, :show]
+
     resources "/accounts", AccountsController, only: [:create, :delete, :show]
+    post "/accounts/transaction", AccountsController, :transaction
   end
 
   # Enable LiveDashboard in development

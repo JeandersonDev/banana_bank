@@ -21,9 +21,11 @@ defmodule BananaBankWeb.ErrorJSON do
 
   def error(%{status: status}), do: %{error: status}
 
-  def error(%{changeset: changeset}) do
+  def error(%{changeset: %Ecto.Changeset{} = changeset}) do
     %{errors: Ecto.Changeset.traverse_errors(changeset, &translate_error/1)}
   end
+
+  def error(%{msg: msg}), do: %{error: msg}
 
   defp translate_error({msg, opts}) do
     Regex.replace(~r"%{(\w+)}", msg, fn _, key ->
